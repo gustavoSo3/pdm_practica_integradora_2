@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:practica_2/pages/home_page/home_page.dart';
+import 'bloc/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -25,10 +26,7 @@ class _LoginPageState extends State<LoginPage> {
             Center(
               child: ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );
+                  BlocProvider.of<LoginBloc>(context).add(LogInPressed());
                 },
                 icon: Icon(Icons.login),
                 label: Text("Login with Google"),
